@@ -194,22 +194,26 @@
             <p class="title">Add item</p>
             <p class="message">Please fill all the details!</p>
             <label>
+                <p>Item Type(Ring / Necklace / Bracelate/ Earrings)</p>
                 <input required="" placeholder="" type="addItamType" class="input">
-                <span>Item Type(Fruits / Vegetables / Others)</span>
+                
             </label>
 
             <label>
+                <p>Item Name</p>
                 <input required="" placeholder="" type="addItemName" class="input">
-                <span>Item Name</span>
+                
             </label>
 
             <label>
+                <p>Price</p>
                 <input required="" placeholder="" type="addItemPrice" class="input">
-                <span>Price</span>
+                
             </label>
             <label>
+                <p>Image(URL Address)</p>
                 <input required="" placeholder="" type="addItemImage" class="input">
-                <span>Image(URL Address)</span>
+                
             </label>
             <button class="submit">Submit</button>
         </form>
@@ -283,6 +287,69 @@
         </section>
         <div id="match-message" class="pop-up-message">
         </main>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/backend/routes/orders.js"></script>
+        <script src="/backend/routes/users.js"></script>
+        <script src="/backend/routes/items.js"></script>
+        <script src="/backend/app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+        <script src="../doOrder.js"></script>
+        <script>
+            const dismissButton = document.querySelector('.dismiss');
+            const formContainer = document.querySelector('.add-item-form');
+
+            dismissButton.addEventListener('click', () => {
+                formContainer.style.display = 'none';
+            });
+            const addButton = document.querySelector('.add-item-button');
+            const form = document.querySelector('.add-item-form');
+
+            addButton.addEventListener('click', () => {
+                form.style.display = 'block';
+            });
+
+        </script>
+
+        <script>
+
+            // Add event listener to the submit button
+            const createItems = () => {
+                const typeInput = document.querySelector('.input[type="addItamType"]');
+                const nameInput = document.querySelector('.input[type="addItemName"]');
+                const imageInput = document.querySelector('.input[type="addItemImage"]');
+                const priceInput = document.querySelector('.input[type="addItemPrice"]');
+
+                const type = typeInput.value;
+                const name = nameInput.value;
+                const image = imageInput.value;
+                const price = parseFloat(priceInput.value);
+
+                const newItem = { type, name, image, price };
+
+                fetch('/items/createItems', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(newItem),
+                })
+                    .then(response => response.json())
+                    .then(createdItem => {
+                        console.log(createdItem);
+                        // Handle the response from the server
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        // Handle any error that occurred during the request
+                    });
+            };
+
+            // Add event listener to the submit button
+            const submitButton = document.querySelector('.submit');
+            submitButton.addEventListener('click', createItems);
+
+        </script>
 
 </body>
 

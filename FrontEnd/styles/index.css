@@ -302,7 +302,7 @@ video {
     
         .content {
           width: 100%;
-          margin: 70px auto 0;
+          /*margin: 70px auto 0;*/
           text-align: center;
           color: #fff;
         }
@@ -314,7 +314,7 @@ video {
         }
     
         .content p {
-          margin: 10px auto;
+          margin: 35px;
           margin-top: 10px;
           font-weight: 100;
           line-height: 25px;
@@ -402,8 +402,9 @@ video {
         border-width: 2px;
                                 }
 
-                                .cotent{
+                                .coמtent{
                                   height: 100vh;
+                                  padding-top: 100px
                                 }
                                                                 .welcomeMessageText {
                                                                   color: #f0e9e9;

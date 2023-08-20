@@ -190,7 +190,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 15px 20px;
+  
   background-color: #212121;
   border: none;
   font: inherit;
@@ -258,26 +258,33 @@ footer {
   }
 }
 .add-item-button {
-  --main-focus: #2d8cf0;
-  --font-color: #323232;
-  --bg-color-sub: #dedede;
-  --bg-color: #eee;
-  --main-color: #323232;
+ 
+  /*--main-color: #323232;*/
   position: relative;
   width: 150px;
   height: 40px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 2px solid var(--main-color);
+  /*border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
   background-color: var(--bg-color);
   border-radius: 10px;
   overflow: hidden;
-  margin-left: 30px;
+  margin-left: 30px;*/
 }
 
-.add-item-button,
+.title{
+  color: #ddd;
+}
+
+.add-item-button {
+  /* ... התכונות הנוספות שכבר כתבתי ... */
+  color: black;
+  /* הוספתי צבע טקסט שחור */
+}
+
+/*.add-item-button,
 .add-item-button__icon,
 .add-item-button__text {
   transition: all 0.3s;
@@ -386,7 +393,7 @@ footer {
 .add-item-button:active {
   transform: translate(3px, 3px);
   box-shadow: 0px 0px var(--main-color);
-}
+}*/
 
 .add-item-form {
   display: none;
@@ -594,3 +601,17 @@ footer {
    background-color: black;
    color: rgb(129, 93, 93);
  }
+
+ .input{
+  height: 5px;
+ }
+
+ .add-item-button.button__text{
+   color: #f0f0f0;
+ }
+
+
+
+ 
+
+ 

@@ -33,6 +33,12 @@
               <li><a href="/others">Bracelets</a></li>
               <li><a href="/earrings">Earrings</a></li>
               <li><a href="/orders"><i class="fas fa-shopping-cart"></i></a></li>
+              <li> <% if (username) { %>
+                <div class="welcome-message">
+                 
+                </div>
+                <a class="navbar-brand" id="logoutBtn" href="/logout" class="navButtons">Logout</a>
+                <% } %>  </li>
               
             </ul>
             
@@ -57,11 +63,9 @@
       <div class="welcome-message">
         <span class="welcomeMessageText">Hi, <%= username %></span>
       </div>
-      <a class="navbar-brand" id="logoutBtn" href="/logout" class="navButtons">Logout</a>
+      
       <% } %>
-        <br>
-        <br>
-        <br>
+    
         <br>
         <br>
         <br>
@@ -93,7 +97,7 @@
   
 
   
-
+<!--
   <div class="navigation">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -107,7 +111,7 @@
         <% } %>
       </ul>
 
-      </div>
+      </div>-->
   </div>
   </nav>
   </div>
