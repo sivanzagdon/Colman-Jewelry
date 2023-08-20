@@ -258,20 +258,26 @@ footer {
   }
 }
 .add-item-button {
- 
-  /*--main-color: #323232;*/
+  --main-color: #323232;
   position: relative;
-  width: 150px;
+  top: 10rem;
   height: 40px;
   cursor: pointer;
-  display: flex;
+  /* display: flex; */
   align-items: center;
-  /*border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  background-color: var(--bg-color);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-left: 30px;*/
+  text-align: center;
+  justify-content: center;
+}
+.add-cart-label{
+        color: white;
+        position: absolute;
+        top: 0rem;
+        left: 33%;
+        z-index: 1;
+        }
+
+.button__text{
+z-index: 1;
 }
 
 .title{
@@ -606,9 +612,20 @@ footer {
   height: 5px;
  }
 
- .add-item-button.button__text{
-   color: #f0f0f0;
- }
+ .button__text {
+  color: #f0f0f0 !important;
+}
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 

@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Fruits</title>
+<title>Necklaces</title>
 <link rel="stylesheet" type="text/css" href="/styles/fruits.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
@@ -97,17 +97,7 @@ button {
     overflow: hidden;
 }
 
-span {
-    background: #e85d9e;
-    height: 100%;
-    width: 0;
-    border-radius: 25px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.5s;
-}
+
 
 button:hover span {
     width: 100%;
@@ -188,12 +178,13 @@ button.new {
   <main>
     <% if (username==='chipopo' ) { %>
       <button class="add-item-button" type="button">
-        <span class="button__text">Add Item</span>
-       <!-- <span class="button__icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+        <span class="button__text"></span>
+        <p class="add-cart-label">Add Item</p>
+        <!-- <span class="button__icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
             <line x1="12" x2="12" y1="5" y2="19"></line>
             <line x1="5" x2="19" y1="12" y2="12"></line>
-          </svg></span>-->
+          </svg></span> -->
       </button>
       <form class="form add-item-form">
         <button class="dismiss" type="button">×</button>
