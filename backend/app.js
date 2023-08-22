@@ -100,7 +100,7 @@ const createApp = async function () {
 
   app.post('/items/delete', async (req, res) => {
     try {
-      const itemId = req.body.itemId;
+      const itemId = req.body.Item.itemId;
       await Item.findByIdAndDelete(itemId);
       res.sendStatus(200);
     } catch (error) {
@@ -211,7 +211,7 @@ const createApp = async function () {
         try {
           const username = req.cookies.user ? req.cookies.user.username : null;
           const earrings = await Item.find({ type: "Earrings" }).exec();
-          // console.log(fruits); // Log the retrieved earrings data
+          
           res.render("earrings", { username, earrings });
         } catch (error) {
           console.error(error);
@@ -219,6 +219,32 @@ const createApp = async function () {
         }
       });
 
+
+
+      
+      app.get("/up", (req, res) => {
+      res.render("up");
+      });
+
+            app.get("/graf", (req, res) => {
+              res.render("graf");
+            });
+
+
+        app.get("/up", (req, res) => {
+          const username = req.cookies.user ? req.cookies.user.username : null; // Retrieve the 'username' cookie value if available
+          res.render("up", { username });
+        });
+
+
+
+
+
+
+  
+
+
+      
 
 
   return app;

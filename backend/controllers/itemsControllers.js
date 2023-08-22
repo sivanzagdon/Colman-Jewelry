@@ -59,3 +59,22 @@ exports.getItems = async (req, res) => {
 // exports.AvgSales = async (req, res) => { res.send(await db_analyzes.avg_weekly_sales().then(num => num.toString())) }
 // exports.AllProfits = async (req, res) => { res.send(await db_analyzes.lastWeek_daily_profit()) }
 // exports.AvgProfits = async (req, res) => { res.send(await db_analyzes.avg_weekly_profits().then(num => num.toString())) }
+
+
+exports.showSingleProduct = async (req, res) => {
+  try {
+    const itemID = req.params.id;
+    const item = await Item.findOne({ name: itemID }).exec();
+
+    if (!item) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    const locals = { title: item.name };
+
+    res.render("product/singleProduct", { locals, item });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+};

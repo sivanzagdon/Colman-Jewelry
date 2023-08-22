@@ -428,7 +428,7 @@ h2 small {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: linear-gradient(gold, gold);
+ /* background-image: linear-gradient(gold, gold);*/
   background-size: 100% 10px;
   background-repeat: no-repeat;
   background-position: 100% 0%;

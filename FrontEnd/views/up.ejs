@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product Form</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Update Product</h1>
+        <form id="updateForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" id="productName" name="productName" required>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price for Update</label>
+                <input type="number" class="form-control" id="productPrice" name="productPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="productImage">Image URL for Update</label>
+                <input type="url" class="form-control" id="productImage" name="productImage" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Product</button>
+        </form>
+        <div id="output"></div>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const updateForm = document.getElementById("updateForm");
+        const output = document.getElementById("output");
+
+        updateForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(updateForm);
+            const response = await fetch("/update-route", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                output.innerHTML = "Product updated successfully!";
+                updateForm.reset();
+            } else {
+                output.innerHTML = "Error updating product.";
+            }
+        });
+    </script>
+
+   
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#updateButton").click(function () {
+                // כאן אתה יכול להוסיף את הקוד שלך לשליחת הטופס לשרת
+                // ולבצע את תהליך העדכון של המוצר
+                // אפשר להשתמש ב-AJAX לשליחת הטופס אסינכרונית
+            });
+        });
+    </script>
+
+</body>
+
+</html>

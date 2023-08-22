@@ -132,4 +132,6 @@ exports.deleteItem = (req, res) => {
     console.error('Failed to delete item from order:', error);
     res.status(500).json({ message: 'Failed to delete item from order' });
   }
+
 };
+
