@@ -12,32 +12,37 @@ exports.createItems = async (req, res) => {
     }
 };
 
+
+
 exports.updateItem = async (req, res) => {
   try {
-    const { type, name, image, price } = req.body;
+    const { nameorigin, name, image, price } = req.body;
 
-    // נבדוק אם קיים פריט עם ה-id הנתון
-    const itemID = req.params.id;
-    const item = await Item.findOne({ name: itemID }).exec();
+    const itemName = req.params.nameorigin;
+    const item = await Item.findOne({ name: itemName }).exec();
 
     if (!item) {
       return res.status(404).json({ message: "Item not found" });
     }
 
     // מעדכנים את הנתונים שנשלחו ב-body
-    item.type = type;
     item.name = name;
     item.image = image;
     item.price = price;
 
     // שומרים את הפריט המעודכן
-    const updatedItem = await item.save();
+  const updatedItem = await Item.updateOne(
+    { _id: item._id },
+    { name, image, price }
+  );
+
 
     res.status(200).json(updatedItem);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
+
 
 
 
