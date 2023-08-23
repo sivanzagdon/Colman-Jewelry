@@ -866,6 +866,7 @@ footer {
      border-radius: 10px;
      overflow: hidden;
      margin-left: 30px;
+    margin-top: 7%;
  }
 
  .add-item-button,
@@ -1110,4 +1111,7 @@ footer {
      font-family: "Times New Roman",
          Times,
          serif;
+ }
+ .card-container {
+     margin-top: 3%;
  }

@@ -26,14 +26,25 @@ exports.updateItem = async (req, res) => {
     }
 
     // מעדכנים את הנתונים שנשלחו ב-body
+  if (name) {
     item.name = name;
+  }
+  if (image) {
     item.image = image;
+  }
+  if (price) {
     item.price = price;
+  }
 
-    // שומרים את הפריט המעודכן
-  const updatedItem = await Item.updateOne(
+  if (!name && !image && !price) {
+    return res.status(400).json({ message: "No fields to update" });
+  }
+
+ // שומרים את הפריט המעודכן
+  const updatedItem = await Item.findByIdAndUpdate(
     { _id: item._id },
-    { name, image, price }
+    { name, image, price },
+     { new: true }
   );
 
 

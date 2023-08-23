@@ -581,7 +581,7 @@ footer {
 
 
 body {
-  margin: 0;
+ 
   padding: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../image/backimage.jpg);
   background-repeat: no-repeat;
@@ -610,7 +610,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+  
   padding: 0 20px;
 }
 
@@ -858,6 +858,7 @@ footer {
   border-radius: 10px;
   overflow: hidden;
   margin-left: 30px;
+  margin-top: 7%;
 }
 
 .add-item-button,
@@ -1104,6 +1105,13 @@ footer {
     serif;
 }
 
+.card-container{
+  margin-top: 3%;
+}
+
+.updatebut{
+  margin-top: 3%;
+}
 
 
 

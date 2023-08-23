@@ -3,17 +3,89 @@
 
 <head>
     <title>update Product</title>
- 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/update.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            body {
+      
+                color: white;
+                font-family: "Times New Roman", Times, serif;
+                          
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../image/backimage.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            right: 30%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            
+            }
+        
+            .form {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
+                margin: auto;
+                justify-content: center;
+                padding: 3%;
+
+            }
+        
+            .form .title {
+                font-size: 24px;
+                margin-bottom: 10px;
+                color:#e85d9e;;
+            }
+        
+            .form .message {
+                font-size: 14px;
+                color: #f9f1f4;;
+                margin-bottom: 20px;
+            }
+        
+            .form label p {
+                margin: 0;
+                margin-bottom: 5px;
+                color: #f4eef1;;
+            }
+        
+            .form .input {
+                width: 100%;
+                padding: 10px;
+                border: 2px solid #e85d9e;;
+                border-radius: 5px;
+                background-color: #f8f8f8;
+                color: black;
+                font-family: inherit;
+            }
+        
+            .form .submit {
+                background-color:#e85d9e;;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+        
+            .form .submit:hover {
+                background-color:#e85d9e;
+            }
+        </style>
 </head>
 
 <body>
     <form class="form add-item-form">
-        <button class="dismiss" type="button">×</button>
+        
         <p class="title">update item</p>
         <p class="message">Please fill all the details!</p>
         <label>
@@ -48,10 +120,10 @@
 
         // Add event listener to the submit button
         const updateItems = () => {
-            const itemNameOriginalInput = document.querySelector('#itemNameOriginal');
-            const updateNameInput = document.querySelector('#updateItemName');
-            const updateImageInput = document.querySelector('#updateItemImage');
-            const updatePriceInput = document.querySelector('#updateItemPrice');
+            const itemNameOriginalInput = document.querySelector('.input[type="itemNameOriginal"]');
+            const updateNameInput = document.querySelector('.input[type="updateItemName"]');
+            const updateImageInput = document.querySelector('.input[type="updateItemImage"]');
+            const updatePriceInput = document.querySelector('.input[type="updateItemPrice"]');
 
             const itemNameOriginal = itemNameOriginalInput.value;
             const updateName = updateNameInput.value;
@@ -59,6 +131,7 @@
             const updatePrice = parseFloat(updatePriceInput.value);
 
             const newItem = { itemNameOriginal, updateName, updateImage, updatePrice };
+            console.log(newItem);
 
             fetch('/items/updateItems', {
                 method: 'POST',
