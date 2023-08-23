@@ -7,8 +7,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #ffffff;
+    
+    
   }
   
   .back-to-home-btn img {
@@ -28,19 +28,28 @@ header {
     justify-content: center;
   }
   .form-container {
-    width: 350px;
-    background-color: #fff;
-    padding: 32px 24px;
+    width: 25%;
+    background-color:transparent;
+    padding: 15px 24px;
     font-size: 14px;
     font-family: Arial, sans-serif;
-    color: #2b2b2b;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+    align-items:center ;
     margin-top: -15%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+      margin-top: 10%;
+
+      max-width: 400px;
   }
   
   .form-container button:active {
@@ -87,10 +96,14 @@ header {
   
   .form-container .social-button.facebook {
     background-color: #1778f2;
+    width: 300%;
+    box-sizing: border-box;
   }
   
   .form-container .social-button.apple {
     background-color: #000;
+    width: 300%;
+      box-sizing: border-box;
   }
   
   .form-container .line {

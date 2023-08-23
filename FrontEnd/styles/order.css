@@ -11,7 +11,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #ffffff;
+  
 }
 
 .back-to-home-btn img {
@@ -89,7 +89,7 @@ main {
   position: fixed;
   bottom: 450px;
   right: 958px;
-  --green: #1BFD9C;
+  --green:#e85d9e;
   font-size: 15px;
   padding: 0.7em 2.7em;
   letter-spacing: 0.06em;
@@ -832,3 +832,10 @@ button.delete:active span.icon svg {
      Times,
      serif;
  }
+
+         .checkout-button {
+           position: fixed;
+           bottom: 20px;
+           right: 20px;
+           z-index: 9999;
+         }

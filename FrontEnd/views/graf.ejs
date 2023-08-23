@@ -149,31 +149,56 @@
     font-weight: bold;
     margin-top: 50px;
   }
+
+    .graphs-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 85%;
+    margin: auto;
+    padding-top: 40px;
+  }
+
+  .graph-item {
+    width: 100%; /* שניתן לשנות את הרוחב לפי הצורך */
+    margin-bottom: 30px;
+  }
 </style>
 </head>
 <body>
 
+    
 
     
   <h1 class="we">We Data:</h1>
   
   <div>
-  <div style="width: 30%;">
+  <div style="width: 60%;">
     <canvas id="ordersChart"></canvas>
   </div>
 <br>
 <br>
 
-  <div style="width: 30%;">
-    <canvas id="usersChart"></canvas>
-  </div> </div>
-
-<br>
-<br>
-
-  <div style="width: 40%;">
+  <div style="width: 60%;">
     <canvas id="newProductsChart"></canvas>
   </div>
+
+<br>
+<br>
+
+<div style="width: 60%;">
+    <canvas id="usersChart"></canvas>
+</div>
+
+<br>
+<br>
+
+<div style="width: 60%;">
+    <canvas id="monthlyOrdersData"></canvas>
+</div>
+
+
+</div>
 
 
 
@@ -185,37 +210,39 @@
 
     // Sample data for orders, users, and new products
     const ordersData = {
-      labels: ['2022', '2023'],
+      labels: ['2017','2018','2019','2020','2021','2022', '2023'],
       datasets: [{
         label: 'Orders per Year',
-        data: [200, 300],
+        data: [200, 300,150,220,340,179,250],
         backgroundColor: fuchsia,
         borderColor: white,
         borderWidth: 3
       }]
     };
 
-    const usersData = {
-      labels: ['2022', '2023'],
-      datasets: [{
-        label: 'Users per Year',
-        data: [500, 600],
-          backgroundColor: white,
-          borderColor: fuchsia,
-          borderWidth: 3
-      }]
-    };
+
 
     const newProductsData = {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [{
         label: 'New Products per Month',
         data: [10, 15, 12, 8, 20, 18, 17, 19, 14, 11, 16, 22],
-        backgroundColor: fuchsia,
-        borderColor: 'white',
+        backgroundColor: white,
+        borderColor: 'fuchsia',
         borderWidth: 1
       }]
     };
+
+        const usersData = {
+                labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                datasets: [{
+                    label: 'Users per Year',
+                    data: [500, 600, 650, 760, 540, 700, 590],
+                    backgroundColor: white,
+                    borderColor: fuchsia,
+                    borderWidth: 3
+                }]
+            };
 
     
     // Create charts
@@ -237,22 +264,7 @@
     });
 
 
- const usersCtx = document.getElementById('usersChart').getContext('2d');
-    new Chart(usersCtx, {
-        type: 'bar',
-        data: usersData,
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Users per Year',
-                    font: {
-                        size: 20 // כאן אתה יכול לשנות את גודל הגופן
-                    }
-                }
-            }
-        }
-    });
+
 
     const newProductsCtx = document.getElementById('newProductsChart').getContext('2d');
     new Chart(newProductsCtx, {
@@ -270,6 +282,23 @@
             }
         }
     });
+
+     const usersCtx = document.getElementById('usersChart').getContext('2d');
+        new Chart(usersCtx, {
+            type: 'bar',
+            data: usersData,
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Users per Year',
+                        font: {
+                            size: 20 // כאן אתה יכול לשנות את גודל הגופן
+                        }
+                    }
+                }
+            }
+        });
 
 
     // נתוני הזמנות פר חודש

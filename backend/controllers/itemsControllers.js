@@ -12,12 +12,42 @@ exports.createItems = async (req, res) => {
     }
 };
 
+exports.updateItem = async (req, res) => {
+  try {
+    const { type, name, image, price } = req.body;
+
+    // נבדוק אם קיים פריט עם ה-id הנתון
+    const itemID = req.params.id;
+    const item = await Item.findOne({ name: itemID }).exec();
+
+    if (!item) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    // מעדכנים את הנתונים שנשלחו ב-body
+    item.type = type;
+    item.name = name;
+    item.image = image;
+    item.price = price;
+
+    // שומרים את הפריט המעודכן
+    const updatedItem = await item.save();
+
+    res.status(200).json(updatedItem);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+
+
+
 
 exports.getItemsByType = async (req, res) => {
     try {
         const itemType = req.query.type;
         const items = await Item.find({ type: itemType }).exec();
-        res.render('fruits', { items });
+        res.render("Necklaces", { items });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Failed to retrieve items by type" });

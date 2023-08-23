@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles/vegetables.css">
+  <title>Bracelets</title>
+  <link rel="stylesheet" type="text/css" href="/styles/vegetables.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <title>Online Vegetable Store</title>
     <style>
       .banner {
         position: relative;
@@ -146,22 +145,22 @@
 
 <body>
   <header>
-        <div class="pink-bar">
-          <p class="free-shipping">Free Shipping on Orders Over $500</p>
-        </div>
-        
-        <div class="banner">
-          <div class="navbar">
-            <li><a href="/graf"><img src="/img/updatelogo.png" class="logo"></a></li>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/fruits">Necklaces</a></li>
-              <li><a href="/vegetables">Rings</a></li>
-              <li><a href="/others">Bracelets</a></li>
-              <li><a href="/earrings">Earrings</a></li>
-              <li><a href="/orders"><i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
-          </div>
+            <div class="pink-bar">
+              <p class="free-shipping">Free Shipping on Orders Over $500</p>
+            </div>
+            
+            <div class="banner">
+              <div class="navbar">
+                <li><a href="/graf"><img src="/img/updatelogo.png" class="logo"></a></li>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/Necklaces">Necklaces</a></li>
+                  <li><a href="/Rings">Rings</a></li>
+                  <li><a href="/Bracelets">Bracelets</a></li>
+                  <li><a href="/earrings">Earrings</a></li>
+                  <li><a href="/orders"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
     <a href="/" class="back-to-home-btn">
       
     </a>
@@ -187,7 +186,7 @@
         <label>
           <p>Item Type(Ring / Necklace / Bracelate/ Earrings)</p>
           <input required="" placeholder="" type="addItamType" class="input">
-         
+          
         </label>
 
         <label>
@@ -228,8 +227,8 @@
                                       <br>
                                       <br>
           </div>
-            <section id="vegetables-container" class="card-container">
-              <% vegetables.forEach(item=> { %>
+            <section id="others-container" class="card-container">
+              <% Bracelets.forEach(item=> { %>
                 <div class="card">
                   <% if (username==='chipopo' ) { %>
                     <button class="button" onclick="removeItem('<%= item._id %>')">
@@ -281,7 +280,7 @@
   </main>
 
   <footer>
-    <p>© 2023 Online Vegetable Store. All rights reserved.</p>
+    <p>&copy;</p>
   </footer>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/backend/routes/orders.js"></script>

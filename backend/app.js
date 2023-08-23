@@ -109,39 +109,39 @@ const createApp = async function () {
     }
   });
 
-  app.get('/fruits', async (req, res) => {
+  app.get("/Necklaces", async (req, res) => {
     try {
       const username = req.cookies.user ? req.cookies.user.username : null;
-      const fruits = await Item.find({ type: 'Necklace' }).exec();
-      // console.log(fruits); // Log the retrieved fruits data
-      res.render('fruits', { username, fruits });
+      const Necklaces = await Item.find({ type: "Necklace" }).exec();
+      // console.log(fruits); // Log the retrieved Necklaces data
+      res.render("Necklaces", { username, Necklaces });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Failed to retrieve fruits' });
+      res.status(500).json({ message: "Failed to retrieve Necklaces" });
     }
   });
 
-  app.get('/vegetables', async (req, res) => {
+  app.get("/Rings", async (req, res) => {
     try {
       const username = req.cookies.user ? req.cookies.user.username : null;
-      const vegetables = await Item.find({ type: 'Ring' }).exec();
-      // console.log(vegetables); // Log the retrieved fruits data
-      res.render('vegetables', { username, vegetables });
+      const Rings = await Item.find({ type: "Ring" }).exec();
+      // console.log(Rings); // Log the retrieved fruits data
+      res.render("Rings", { username, Rings });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Failed to retrieve vegetables' });
+      res.status(500).json({ message: "Failed to retrieve Rings" });
     }
   });
 
-  app.get('/others', async (req, res) => {
+  app.get("/Bracelets", async (req, res) => {
     try {
       const username = req.cookies.user ? req.cookies.user.username : null;
-      const others = await Item.find({ type: "Bracelate" }).exec();
-      // console.log(others); // Log the retrieved fruits data
-      res.render('others', { username, others });
+      const Bracelets = await Item.find({ type: "Bracelate" }).exec();
+      // console.log(Bracelets); // Log the retrieved fruits data
+      res.render("Bracelets", { username, Bracelets });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Failed to retrieve others' });
+      res.status(500).json({ message: "Failed to retrieve Bracelets" });
     }
   });
 
