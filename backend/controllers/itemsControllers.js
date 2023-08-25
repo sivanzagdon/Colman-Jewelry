@@ -18,8 +18,7 @@ exports.updateItem = async (req, res) => {
   try {
     const { nameorigin, name, image, price } = req.body;
 
-    const itemName = req.params.nameorigin;
-    const item = await Item.findOne({ name: itemName }).exec();
+    const item = await Item.findOne({ name: nameorigin }).exec();
 
     if (!item) {
       return res.status(404).json({ message: "Item not found" });

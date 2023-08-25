@@ -5,12 +5,12 @@
     <title>update Product</title>
     <link rel="stylesheet" type="text/css" href="/styles/update.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <style>
-            body {
-      
-                color: white;
-                font-family: "Times New Roman", Times, serif;
-                          
+    <style>
+        body {
+
+            color: white;
+            font-family: "Times New Roman", Times, serif;
+
             background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../image/backimage.jpg);
             background-size: cover;
             background-position: center;
@@ -24,135 +24,135 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            
-            }
-        
-            .form {
-                background-color: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
-                margin: auto;
-                justify-content: center;
-                padding: 3%;
 
-            }
-        
-            .form .title {
-                font-size: 24px;
-                margin-bottom: 10px;
-                color:#e85d9e;;
-            }
-        
-            .form .message {
-                font-size: 14px;
-                color: #f9f1f4;;
-                margin-bottom: 20px;
-            }
-        
-            .form label p {
-                margin: 0;
-                margin-bottom: 5px;
-                color: #f4eef1;;
-            }
-        
-            .form .input {
-                width: 100%;
-                padding: 10px;
-                border: 2px solid #e85d9e;;
-                border-radius: 5px;
-                background-color: #f8f8f8;
-                color: black;
-                font-family: inherit;
-            }
-        
-            .form .submit {
-                background-color:#e85d9e;;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-                font-weight: bold;
-            }
-        
-            .form .submit:hover {
-                background-color:#e85d9e;
-            }
-        </style>
+        }
+
+        .form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
+            margin: auto;
+            justify-content: center;
+            padding: 3%;
+
+        }
+
+        .form .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #e85d9e;
+            ;
+        }
+
+        .form .message {
+            font-size: 14px;
+            color: #f9f1f4;
+            ;
+            margin-bottom: 20px;
+        }
+
+        .form label p {
+            margin: 0;
+            margin-bottom: 5px;
+            color: #f4eef1;
+            ;
+        }
+
+        .form .input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e85d9e;
+            ;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+            color: black;
+            font-family: inherit;
+        }
+
+        .form .submit {
+            background-color: #e85d9e;
+            ;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form .submit:hover {
+            background-color: #e85d9e;
+        }
+    </style>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select the form using its class
+            const form = document.querySelector('.add-item-form');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();  // Prevent the default form submission
+
+                // Create a new FormData instance from the form
+                const formData = new FormData(form);
+                let formDataObj = {};
+                for (let [key, value] of formData.entries()) {
+                    formDataObj[key] = value;
+                }
+
+                // Send the data using Fetch API
+                fetch('/items/updateItems', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formDataObj)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);  // Handle the server's response here
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);  // Handle any errors here
+                    });
+            });
+        });
+    </script>
 </head>
 
 <body>
     <form class="form add-item-form">
-        
+
         <p class="title">update item</p>
         <p class="message">Please fill all the details!</p>
         <label>
             <p>Item Name original</p>
-            <input required="" placeholder="" type="text" class="input" id="itemNameOriginal">
+            <input name="nameorigin" required placeholder type="text" class="input" id="itemNameOriginal">
         </label>
         <br><br><br>
         <label>
             <p> Item Name to update</p>
-            <input required="" placeholder="" type="text" class="input" id="updateItemName">
+            <input name="name" required placeholder type="text" class="input" id="updateItemName">
         </label>
         <br><br><br>
         <label>
             <p>Price to update</p>
-            <input required="" placeholder="" type="number" class="input" id="updateItemPrice">
+            <input name="price" required placeholder type="number" class="input" id="updateItemPrice">
         </label>
         <br><br><br>
         <label>
             <p>Image(URL Address) to update</p>
-            <input required="" placeholder="" type="text" class="input" id="updateItemImage">
+            <input name="image" required placeholder type="text" class="input" id="updateItemImage">
         </label>
         <br><br><br>
-        <button class="submit">UpDate</button>
+        <button onclick="updateItems()" class="submit">UpDate</button>
     </form>
 
-    <script>
-        // Add event listener to the dismiss button
-        const dismissButton = document.querySelector('.dismiss');
-        dismissButton.addEventListener('click', () => {
-            // Code to handle form dismissal
-        });
-
-        // Add event listener to the submit button
-        const updateItems = () => {
-            const itemNameOriginalInput = document.querySelector('.input[type="itemNameOriginal"]');
-            const updateNameInput = document.querySelector('.input[type="updateItemName"]');
-            const updateImageInput = document.querySelector('.input[type="updateItemImage"]');
-            const updatePriceInput = document.querySelector('.input[type="updateItemPrice"]');
-
-            const itemNameOriginal = itemNameOriginalInput.value;
-            const updateName = updateNameInput.value;
-            const updateImage = updateImageInput.value;
-            const updatePrice = parseFloat(updatePriceInput.value);
-
-            const newItem = { itemNameOriginal, updateName, updateImage, updatePrice };
-            console.log(newItem);
-
-            fetch('/items/updateItems', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newItem),
-            })
-                .then(response => response.json())
-                .then(updatedItem => {
-                    console.log(updatedItem);
-                    // Handle the response from the server
-                })
-                .catch(error => {
-                    console.error(error);
-                    // Handle any error that occurred during the request
-                });
-        };
-
-        // Add event listener to the submit button
-        const submitButton = document.querySelector('.submit');
-        submitButton.addEventListener('click', updateItems);
-    </script>
 </body>
