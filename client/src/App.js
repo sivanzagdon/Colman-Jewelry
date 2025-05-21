@@ -7,6 +7,7 @@ import RingsScreen from './screens/RingsScreen/RingsScreen.tsx'
 import BraceletsScreen from './screens/BraceletsScreen/BraceletsScreen.tsx'
 import EarringsScreen from './screens/EarringsScreen/EarringsScreen.tsx'
 import SignInScreen from './screens/SignInScreen/SignInScreen.tsx'
+import SignupScreen from './screens/SignUpScreen/SignUpScreen.tsx'
 // import OrdersScreen from './screens/OrdersScreen.'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/bracelets" element={<BraceletsScreen />} />
         <Route path="/earrings" element={<EarringsScreen />} />
         <Route path="/signin" element={<SignInScreen />} />
+          <Route path="/signup" element={<SignupScreen />} /> 
         {/* <Route path="/orders" element={<OrdersScreen />} /> */}
       </Routes>
     </Router>
