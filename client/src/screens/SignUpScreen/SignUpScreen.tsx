@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signUp } from '../../services/userService.ts';
 import backgroundImage from '../../assets/img/backimage.jpg';
 import logoImage from '../../assets/img/updatelogo.png';
@@ -10,6 +11,7 @@ const SignUpScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,6 +40,8 @@ const SignUpScreen: React.FC = () => {
 
     setError('');
     setSuccess(true);
+    localStorage.setItem('username', username);
+    navigate('/');
   };
 
   const styles = {
@@ -202,11 +206,11 @@ const SignUpScreen: React.FC = () => {
           {success && <p style={styles.success}>Signup successful!</p>}
 
           <button type="submit" style={styles.button}>Sign Up</button>
+<p style={styles.footer}>
+  Already have an account?
+  <Link to="/signin" style={styles.link}>Sign in</Link>
+</p>
 
-          <p style={styles.footer}>
-            Already have an account?
-            <a href="/signin" style={styles.link}>Sign in</a>
-          </p>
         </form>
       </div>
     </div>

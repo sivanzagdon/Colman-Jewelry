@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import logoImage from '../../assets/img/updatelogo.png'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { signIn } from '../../services/userService.ts'
+import backgroundImage from '../../assets/img/backimage.jpg';
+
+
 
 interface UserProfileProps {
   username: string | null
@@ -10,8 +13,12 @@ interface UserProfileProps {
 const SignInScreen: React.FC<UserProfileProps> = ({
   username: initialUsername,
 }) => {
-  const [username, setUsername] = useState<string | null>(initialUsername)
+const storedUsername = localStorage.getItem('username')
+const [username, setUsername] = useState<string | null>(storedUsername)
+
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const navigate = useNavigate()
+
 
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -29,24 +36,21 @@ const SignInScreen: React.FC<UserProfileProps> = ({
     } else if (result.username) {
       alert(`Welcome ${result.username}!`)
       setUsername(result.username)
-      // כאן אפשר להוסיף ניתוב לדף אחר, לדוגמה:
-      // navigate('/')
+      navigate('/')
     }
   }
 
   const styles = {
     body: {
-      background:
-        'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/image/backimage.jpg)',
-      backgroundRepeat: 'no-repeat',
+      backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${backgroundImage})`,
       backgroundSize: 'cover',
-      margin: 0,
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
       fontFamily: 'Arial, sans-serif',
       color: '#fff',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column' as 'column',
     },
+
     banner: {
       position: 'relative' as 'relative',
       backgroundSize: 'cover',
@@ -58,14 +62,11 @@ const SignInScreen: React.FC<UserProfileProps> = ({
       overflow: 'hidden',
     },
     navbar: {
-      width: '85%',
-      margin: 'auto',
-      padding: '20px 0',
+      backgroundColor: '#00000080',
+      padding: '10px 40px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      listStyle: 'none',
-      color: '#fff',
     },
     logo: {
       width: '160px',

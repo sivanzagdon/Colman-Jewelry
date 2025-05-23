@@ -1,11 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import backgroundImage from '../../assets/img/backimage.jpg'
 import logoImage from '../../assets/img/updatelogo.png'
-
-interface HomePageProps {
-  username: string | null
-}
 
 interface NavLink {
   label: string
@@ -20,7 +16,16 @@ const navLinks: NavLink[] = [
   { label: 'Earrings', path: '/earrings' },
 ]
 
-const HomePage: React.FC<HomePageProps> = ({ username }) => {
+const HomePage: React.FC = () => {
+const username = localStorage.getItem('username')
+const navigate = useNavigate()
+
+const handleLogout = () => {
+  localStorage.removeItem('username') 
+  navigate('/') 
+}
+
+
   return (
     <>
       <div
@@ -160,17 +165,18 @@ const HomePage: React.FC<HomePageProps> = ({ username }) => {
                 >
                   Hi, {username}
                 </span>
-                <Link
-                  id="logoutBtn"
-                  to="/logout"
+                <button
+                  onClick={handleLogout}
                   style={{
+                    background: 'none',
+                    border: 'none',
                     color: '#e85d9e',
                     fontWeight: 'bold',
-                    textDecoration: 'none',
+                    cursor: 'pointer',
                   }}
                 >
                   Logout
-                </Link>
+                </button>
               </li>
             )}
           </ul>
@@ -213,84 +219,88 @@ const HomePage: React.FC<HomePageProps> = ({ username }) => {
           since 2021
         </p>
 
-        {!username && (
-          <div style={{ display: 'inline-flex', gap: 20 }}>
-            <Link to="/signin">
-              <button
-                style={{
-                  borderRadius: 25,
-                  border: '2px solid #e85d9e',
-                  background: 'transparent',
-                  color: '#fff',
-                  padding: '10px 40px',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  fontFamily: 'Arial, sans-serif',
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = '#e85d9e')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = 'transparent')
-                }
-              >
-                Sign In
-              </button>
-            </Link>
-
-            <Link to="/signup">
-              <button
-                style={{
-                  borderRadius: 25,
-                  border: '2px solid #e85d9e',
-                  background: 'transparent',
-                  color: '#fff',
-                  padding: '10px 40px',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  fontFamily: 'Arial, sans-serif',
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = '#e85d9e')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = 'transparent')
-                }
-              >
-                Sign Up
-              </button>
-            </Link>
+        {username ? (
+          <div style={{ fontSize: 24, fontWeight: 'bold', color: '#e85d9e' }}>
+            Welcome, {username}!
           </div>
-        )}
+        ) : (
+          <>
+            <div style={{ display: 'inline-flex', gap: 20 }}>
+              <Link to="/signin">
+                <button
+                  style={{
+                    borderRadius: 25,
+                    border: '2px solid #e85d9e',
+                    background: 'transparent',
+                    color: '#fff',
+                    padding: '10px 40px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontFamily: 'Arial, sans-serif',
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = '#e85d9e')
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = 'transparent')
+                  }
+                >
+                  Sign In
+                </button>
+              </Link>
 
-        {!username && (
-          <div style={{ marginTop: 40 }}>
-            <Link to="/contact">
-              <button
-                style={{
-                  borderRadius: 25,
-                  border: '2px solid #e85d9e',
-                  background: 'transparent',
-                  color: '#fff',
-                  padding: '10px 60px',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  fontFamily: 'Arial, sans-serif',
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = '#e85d9e')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = 'transparent')
-                }
-              >
-                Contact Us
-              </button>
-            </Link>
-          </div>
+              <Link to="/signup">
+                <button
+                  style={{
+                    borderRadius: 25,
+                    border: '2px solid #e85d9e',
+                    background: 'transparent',
+                    color: '#fff',
+                    padding: '10px 40px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontFamily: 'Arial, sans-serif',
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = '#e85d9e')
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = 'transparent')
+                  }
+                >
+                  Sign Up
+                </button>
+              </Link>
+            </div>
+
+            <div style={{ marginTop: 40 }}>
+              <Link to="/contact">
+                <button
+                  style={{
+                    borderRadius: 25,
+                    border: '2px solid #e85d9e',
+                    background: 'transparent',
+                    color: '#fff',
+                    padding: '10px 60px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontFamily: 'Arial, sans-serif',
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = '#e85d9e')
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = 'transparent')
+                  }
+                >
+                  Contact Us
+                </button>
+              </Link>
+            </div>
+          </>
         )}
       </main>
     </>
