@@ -4,7 +4,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const path = require('path')
-const cors = require('cors') // הוספתי את הייבוא של cors
+const cors = require('cors')
 
 const MONGO_URI =
   'mongodb+srv://sivan0252:YDucINw2cGRBs19I@cluster0.nj84cuz.mongodb.net/'
@@ -12,13 +12,21 @@ const MONGO_URI =
 const createApp = async function () {
   const app = express()
 
+  // חיבור למסד הנתונים
+  await db.connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+
+  console.log('✅ Database Connected')
+
+  // הגדרות בסיס
   app.use(
     cors({
-      origin: 'http://localhost:3000', // הכתובת של הפרונטאנד שלך
-      credentials: true, // מאפשר לשלוח עוגיות וסשנים
+      origin: 'http://localhost:3000',
+      credentials: true,
     })
   )
-
   app.use(express.json())
   app.use(cookieParser())
   app.use(express.urlencoded({ extended: false }))
@@ -30,23 +38,10 @@ const createApp = async function () {
     })
   )
 
+  // ראוטים
   app.use('/api/users', require('./routes/users'))
   app.use('/api/items', require('./routes/items'))
   app.use('/api/orders', require('./routes/orders'))
-
-  await db.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-
-  console.log('Database Connected!')
-
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(process.cwd(), 'client', 'build')))
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(process.cwd(), 'client', 'build', 'index.html'))
-    })
-  }
 
   app.post('/api/logout', (req, res) => {
     res.clearCookie('user')
@@ -66,12 +61,15 @@ const createApp = async function () {
     }
   })
 
-  const port = process.env.PORT || 4000
-  app.listen(port, () => {
-    console.log(`Server listening on port ${port}`)
+  // ✅ הגשת אפליקציית React (build) גם בפיתוח וגם בפרודקשן
+  app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
   })
+  // הגדרת הפורט ל־server.js
+  app.set('port', process.env.PORT || 4000)
 
-  console.log('App Created!')
+  console.log('✅ App Created')
 
   return app
 }
